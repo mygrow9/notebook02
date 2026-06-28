@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>車牌辨識張數月報表</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Excel 月報彙整</p>
+            <h1>車牌辨識張數月報表</h1>
+          </div>
+          <div class="button-group">
+            <button id="downloadBtn" class="primary-button" type="button" disabled>下載總表.xlsx</button>
+            <button id="downloadFinalBtn" class="primary-button secondary-button" type="button" disabled>下載final.html</button>
+          </div>
+        </header>
+
+        <section class="upload-panel" id="dropZone">
+          <div class="upload-copy">
+            <strong>上傳 01-06.xlsx</strong>
+            <span>支援多檔選取；重新上傳會以最新檔案重算畫面與下載檔。</span>
+          </div>
+          <label class="file-button">
+            選擇檔案
+            <input id="fileInput" type="file" accept=".xlsx,.xls" multiple />
+          </label>
+        </section>
+
+        <section class="status-grid" aria-live="polite">
+          <div>
+            <span class="metric-label">月份</span>
+            <strong id="monthMetric">0</strong>
+          </div>
+          <div>
+            <span class="metric-label">單位列數</span>
+            <strong id="unitMetric">0</strong>
+          </div>
+          <div>
+            <span class="metric-label">總數</span>
+            <strong id="totalMetric">0</strong>
+          </div>
+          <div>
+            <span class="metric-label">狀態</span>
+            <strong id="statusMetric">等待上傳</strong>
+          </div>
+        </section>
+
+        <section id="messagePanel" class="message-panel" hidden></section>
+
+        <section class="results">
+          <nav id="tabs" class="tabs" aria-label="結果表"></nav>
+          <div class="table-toolbar">
+            <h2 id="tableTitle">尚未產生結果</h2>
+            <span id="tableMeta">上傳月報後會顯示總表內容。</span>
+          </div>
+          <div id="chartPanel" class="chart-panel" hidden></div>
+          <div class="table-wrap">
+            <table id="previewTable"></table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
